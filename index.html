@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raden Sholikhan · Portfolio</title>
+    <style>
+        /* ===== RESET & FONT ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Inter', 'Montserrat', system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 30% 10%, #3b1e4b, #0f0b1a 60%, #020106);
+            background-size: 200% 200%;
+            animation: breatheGradient 14s ease infinite alternate;
+            color: #f0e6ff;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* animasi gradasi halus (shifting gradient) */
+        @keyframes breatheGradient {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ===== GLASSMORPHISM CARD (efek kaca) ===== */
+        .glass-card {
+            background: rgba(20, 10, 30, 0.4);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(170, 120, 220, 0.25);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(180, 130, 255, 0.1) inset;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(200, 150, 255, 0.6);
+            transform: translateY(-6px);
+        }
+
+        /* ===== PROFILE SECTION ===== */
+        .profile-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(200, 130, 255, 0.7);
+            box-shadow: 0 0 30px #b77eff, 0 10px 30px rgba(0,0,0,0.7);
+            transition: 0.3s;
+            background: #2a1b3a;
+        }
+        .avatar:hover {
+            border-color: #e4b5ff;
+            box-shadow: 0 0 45px #cd9eff;
+            transform: scale(1.02);
+        }
+
+        .name-tagline {
+            text-align: center;
+        }
+        .name-tagline h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #f2dcff, #c7a0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #a95eff;
+        }
+        .name-tagline .tagline {
+            font-size: 1.4rem;
+            background: rgba(255,255,255,0.08);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,215,255,0.2);
+            margin-top: 0.5rem;
+            color: #d4b5ff;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-card {
+            padding: 2rem 2.2rem;
+            margin: 2.5rem 0;
+            background: rgba(10, 5, 18, 0.5);
+            border-left: 6px solid #aa6aff;
+        }
+        .about-card p {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #e5d0ff;
+        }
+
+        /* ===== SKILLS GRID ===== */
+        .skills-title {
+            font-size: 2rem;
+            margin: 2rem 0 1.2rem 0;
+            border-bottom: 2px dashed #a16bdb;
+            display: inline-block;
+            padding-bottom: 0.4rem;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 2.8rem;
+        }
+        .skill-item {
+            background: rgba(45, 20, 70, 0.6);
+            backdrop-filter: blur(6px);
+            border: 1px solid #7d48b3;
+            border-radius: 40px;
+            padding: 0.9rem 1.8rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #f0d5ff;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+            cursor: default;
+        }
+        .skill-item:hover {
+            background: #682b9e;
+            color: white;
+            border-color: #e7b9ff;
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 25px #bf7eff;
+        }
+
+        /* ===== BITCOIN HOLDER CARD ===== */
+        .btc-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: rgba(18, 8, 28, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 3rem;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0;
+            align-items: center;
+            border: 1px solid #a26bdf;
+            transition: 0.3s;
+        }
+        .btc-section:hover {
+            border-color: #d191ff;
+            box-shadow: 0 0 30px #8729ff33;
+        }
+        .btc-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 3px solid #c394ff;
+            box-shadow: 0 0 30px #f5b9ff;
+        }
+        .btc-text {
+            flex: 1;
+        }
+        .btc-text h3 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #f5d742, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        .btc-text p {
+            font-size: 1.2rem;
+            color: #e2c7ff;
+        }
+        .btc-badge {
+            background: #2e1c3f;
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #f1c40f;
+            color: #ffdb7c;
+            font-weight: 600;
+        }
+
+        /* ===== KONTAK & EMAIL COPY ===== */
+        .contact-area {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(26, 12, 38, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1.8rem 2rem;
+            border-radius: 100px 30px 30px 100px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #a063db;
+        }
+        .email-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .email-label {
+            background: #532c7c;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .email-copy-btn {
+            background: transparent;
+            border: 2px solid #b881ff;
+            color: #dec5ff;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        .email-copy-btn:hover {
+            background: #b881ff;
+            color: #0f0b1a;
+            border-color: white;
+            box-shadow: 0 0 25px #d289ff;
+        }
+        .social-ig {
+            font-size: 1.5rem;
+            background: rgba(180, 110, 255, 0.2);
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #b072ff;
+        }
+        .social-ig a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .social-ig a:hover {
+            color: #f1d3ff;
+            text-shadow: 0 0 8px white;
+        }
+
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .name-tagline h1 { font-size: 2.2rem; }
+            .contact-area { flex-direction: column; align-items: flex-start; gap: 1rem; border-radius: 50px; }
+            .btc-section { flex-direction: column; text-align: center; }
+            .avatar { width: 120px; height: 120px; }
+        }
+
+        /* notifikasi copy */
+        .copy-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background: #6a1f9e;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 500;
+            box-shadow: 0 0 40px #c97dff;
+            border: 1px solid #e1b1ff;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- PROFILE HEADER (foto lingkaran) -->
+        <div class="profile-wrapper">
+            <img src="IMG_20260316_110406.jpg" alt="Raden Sholikhan" class="avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22 fill=%22%234a235c%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 /><text x=%2220%22 y=%2265%22 font-size=%2230%22 fill=%22%23fff%22>📸</text></svg>'">
+            <div class="name-tagline">
+                <h1>RADEN SHOLIKHAN</h1>
+                <div class="tagline">PENGUSAHA / INVESTOR</div>
+            </div>
+        </div>
+
+        <!-- TENTANG SAYA (glass card) -->
+        <div class="glass-card about-card">
+            <p>✨ “Slalu ingin tahu bagaimana cara kerja Dunia, selalu investasi leher ke atas.....>”</p>
+        </div>
+
+        <!-- KETERAMPILAN / SKILLS -->
+        <h2 class="skills-title">⚡ spek special</h2>
+        <div class="skills-grid">
+            <div class="skill-item">🔮 bisa melihat masa yg akan datang</div>
+            <div class="skill-item">📱 menganalisa Mobile Legend Bang Bang</div>
+            <div class="skill-item">🎥 konten kreator</div>
+            <div class="skill-item">🎮 streamer game (kalo lagi gabut)</div>
+            <div class="skill-item">🌍 vloger</div>
+            <!-- tambahan bumbu skill -->
+            <div class="skill-item">💼 investor mindset</div>
+        </div>
+
+        <!-- BITCOIN HOLDER SECTION (gambar bitcoin.jpg) -->
+        <div class="btc-section">
+            <img src="bitcoin.jpg" alt="Bitcoin holder" class="btc-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22 fill=%22%233f2357%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 stroke=%22%23f0b90b%22 stroke-width=%223%22 /><text x=%2220%22 y=%2265%22 font-size=%2235%22 fill=%22%23f3ba2f%22>₿</text></svg>'">
+            <div class="btc-text">
+                <h3>BITCOIN HOLDER</h3>
+                <p>sejak Juni 2025 · diamond hands</p>
+                <span class="btc-badge">🇮🇩 early adopter</span>
+            </div>
+        </div>
+
+        <!-- KONTAK + EMAIL + COPY & SOSMED -->
+        <div class="contact-area">
+            <div class="email-block">
+                <span class="email-label">📧 email</span>
+                <span id="emailDisplay">sholikhanahmad06@gmail.com</span>
+                <button class="email-copy-btn" id="copyEmailBtn">📋 salin</button>
+            </div>
+            <div class="social-ig">
+                <a href="https://instagram.com/Shomad_25" target="_blank" rel="noopener">📸 IG Shomad_25</a>
+            </div>
+        </div>
+
+        <!-- footer kecil biar cantik -->
+        <div style="text-align: center; margin-top: 3rem; opacity: 0.7; font-size: 0.9rem;">
+            ⚡ ungu-hitam gradasi · portfolio dinamis
+        </div>
+    </div>
+
+    <!-- NOTIFIKASI COPY TOAST -->
+    <div id="copyToast" class="copy-toast">📧 email disalin!</div>
+
+    <script>
+        (function() {
+            // ===== INTERAKSI COPY EMAIL =====
+            const copyBtn = document.getElementById('copyEmailBtn');
+            const emailSpan = document.getElementById('emailDisplay');
+            const toast = document.getElementById('copyToast');
+
+            if (copyBtn && emailSpan) {
+                copyBtn.addEventListener('click', function() {
+                    // ambil teks email (tanpa embel2)
+                    const email = emailSpan.innerText.trim(); 
+
+                    // fallback modern
+                    navigator.clipboard.writeText(email).then(() => {
+                        // tampilkan toast
+                        toast.classList.add('show');
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 1800);
+                    }).catch(err => {
+                        alert('gagal menyalin email, klik manual: ' + email);
+                    });
+                });
+            }
+
+            // ===== efek tambahan: skill items interaktif (sudah ada hover di css)
+            // ===== (optional) console greeting
+            console.log('🔥 portfolio Raden Sholikhan — ungu hitam gradasi siap!');
+
+            // validasi gambar: jika image gagal dimuat, fallback sudah disediakan di atribut onerror
+            // namun kita kasih warning ringan
+            const profileImg = document.querySelector('.avatar');
+            if (profileImg) {
+                profileImg.addEventListener('error', function() {
+                    console.warn("IMG_20260316_110406.jpg tidak ditemukan, pakai placeholder.");
+                });
+            }
+
+            const btcImg = document.querySelector('.btc-img');
+            if (btcImg) {
+                btcImg.addEventListener('error', function() {
+                    console.warn("bitcoin.jpg tidak ditemukan, pakai placeholder bitcoin.");
+                });
+            }
+
+            // sentuhan animasi tambahan: gradasi pada border card bisa live (tidak perlu)
+        })();
+    </script>
+
+    <!-- note: untuk keperluan github, pastikan file IMG_20260316_110406.jpg dan bitcoin.jpg ada di folder yg sama dengan index.html -->
+</body>
+</html>
